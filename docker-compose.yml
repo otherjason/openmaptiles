@@ -4,7 +4,7 @@ volumes:
   cache:
 services:
   postgres:
-    image: "openmaptiles/postgis:2.8"
+    image: "openmaptiles/postgis:latest"
     volumes:
     - pgdata:/var/lib/postgresql/data
     networks:
@@ -13,17 +13,17 @@ services:
      - "5432"
     env_file: .env
   import-natural-earth:
-    image: "openmaptiles/import-natural-earth:1.2"
+    image: "openmaptiles/import-natural-earth:latest"
     env_file: .env
     networks:
     - postgres_conn
   import-water:
-    image: "openmaptiles/import-water:0.4"
+    image: "openmaptiles/import-water:latest"
     env_file: .env
     networks:
     - postgres_conn
   import-lakelines:
-    image: "openmaptiles/import-lakelines:0.9"
+    image: "openmaptiles/import-lakelines:latest"
     env_file: .env
     networks:
     - postgres_conn
@@ -39,7 +39,7 @@ services:
      - ./build:/mapping
      - cache:/cache
   import-osmborder:
-    image: "openmaptiles/import-osmborder:0.2"
+    image: "openmaptiles/import-osmborder:latest"
     env_file: .env
     networks:
     - postgres_conn
@@ -68,7 +68,7 @@ services:
      - ./build:/mapping
      - cache:/cache
   import-sql:
-    image: "openmaptiles/import-sql:0.5"
+    image: "openmaptiles/import-sql:latest"
     env_file: .env
     networks:
     - postgres_conn
